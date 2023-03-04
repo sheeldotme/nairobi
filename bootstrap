@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# if nix is not installed, install it
+
+if ! command -v nix &> /dev/null
+then
+   curl -L https://nixos.org/nix/install | sh
+fi
+
+NIX_FLAGS='--extra-experimental-features "nix-command flakes"'
+
+bash -lc "nix $NIX_FLAGS run github:sheeldotme/nairobi/main"

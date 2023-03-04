@@ -29,7 +29,7 @@
           git pull
         fi
 
-        # build the initial system so we can use its nix-darwin installer
+        # if we need to, build the initial system so we can use its installer
 
         installer="darwin-rebuild"
         

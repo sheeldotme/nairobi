@@ -18,7 +18,7 @@
       text = ''
         work="$HOME/.config/nairobi"
         mkdir -p "$work"
-        cd $work
+        cd "$work"
 
         # if $work is empty clone nairobi otherwise pull
         
@@ -31,14 +31,15 @@
 
         # if we need to, build the initial system so we can use its installer
 
+        host="$(hostname)"
         installer="darwin-rebuild"
         
         if ! command -v "$installer" &> /dev/null; then
-          nix build ".#darwinConfigurations.jakarta.system"
+          nix build ".#darwinConfigurations.$host.system"
           installer="result/sw/bin/$installer"
         fi
         
-        "$installer" switch --flake ".#jakarta"
+        "$installer" switch --flake ".#$host"
       '';
     };
     darwinConfigurations.jakarta = nix-darwin.lib.darwinSystem {

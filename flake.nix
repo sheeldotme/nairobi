@@ -53,7 +53,11 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.sheelpatel = { pkgs, ... }: {
+              imports = [
+                ./modules/podman.nix
+              ];
               home.stateVersion = "23.05";
+              nairobi.podman.enable = true;
               programs = {
                 gh = {
                   enable = true;
@@ -64,6 +68,7 @@
                   userEmail = "hello@sheel.me";
                   userName = "Sheel Patel";
                 };
+                zsh.enable = true;
               };
             };
           };
@@ -77,6 +82,7 @@
               experimental-features = nix-command flakes
             '';
           };
+          programs.zsh.enable = true;
           services.nix-daemon.enable = true;
         })
         home-manager.darwinModules.home-manager

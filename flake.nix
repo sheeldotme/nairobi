@@ -14,10 +14,6 @@
         echo "Hello, world!"
       '';
     };
-    apps.aarch64-darwin.default = {
-      type = "app";
-      program = "${self.packages.aarch64-darwin.default}/bin/nairobi-installer";
-    };
     darwinConfigurations.jakarta = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [

@@ -49,6 +49,19 @@
       system = "aarch64-darwin";
       modules = [
         ({ pkgs, ... }: {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.sheelpatel = { pkgs, ... }: {
+              home.stateVersion = "23.05";
+              programs = {
+                gh = {
+                  enable = true;
+                  settings.git.protocol = "ssh";
+                };
+              };
+            };
+          };
           networking = {
             computerName = "jakarta";
             hostName = "jakarta";

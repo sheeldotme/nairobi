@@ -17,7 +17,7 @@
       ];
       text = ''
         work="$HOME/.config/nairobi"
-        mkdir -p $work
+        mkdir -p "$work"
         if [ -z "$(ls -A "$work")" ]; then
           gh auth login
           gh repo clone nairobi "$work"

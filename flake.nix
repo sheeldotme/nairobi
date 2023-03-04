@@ -5,8 +5,12 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs =  { self, nixpkgs, nix-darwin }: {
+  outputs =  { self, nixpkgs, nix-darwin, home-manager }: {
     packages.aarch64-darwin.default = let 
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
     in pkgs.writeShellApplication {
@@ -57,6 +61,7 @@
           };
           services.nix-daemon.enable = true;
         })
+        home-manager.darwinModules.home-manager
       ];
     };
   };

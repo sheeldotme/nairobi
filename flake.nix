@@ -31,15 +31,14 @@
 
         # if we need to, build the initial system so we can use its installer
 
-        host="$(hostname)"
         installer="darwin-rebuild"
         
         if ! command -v "$installer" &> /dev/null; then
-          nix build ".#darwinConfigurations.$host.system"
+          nix build ".#darwinConfigurations.$(hostname).system"
           installer="result/sw/bin/$installer"
         fi
         
-        "$installer" switch --flake ".#$host"
+        "$installer" switch --flake ".#"
       '';
     };
     darwinConfigurations.jakarta = nix-darwin.lib.darwinSystem {

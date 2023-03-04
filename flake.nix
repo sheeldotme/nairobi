@@ -59,6 +59,11 @@
                   enable = true;
                   settings.git.protocol = "ssh";
                 };
+                git = {
+                  enable = true;
+                  userEmail = "hello@sheel.me";
+                  userName = "Sheel Patel";
+                };
               };
             };
           };

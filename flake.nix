@@ -17,8 +17,8 @@
       ];
       text = ''
         gh auth login
-        mkdir -p $HOME/.config
-        gh repo clone nairobi $HOME/.config/nairobi
+        mkdir -p "$HOME/.config"
+        gh repo clone nairobi "$HOME/.config/nairobi"
       '';
     };
     darwinConfigurations.jakarta = nix-darwin.lib.darwinSystem {

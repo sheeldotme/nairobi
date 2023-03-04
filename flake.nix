@@ -25,6 +25,7 @@
           (cd "$work" && git pull)
         fi
         nix build "$work#darwinConfigurations.jakarta.system"
+        result/sw/bin/darwin-rebuild switch --flake "$work#darwinConfigurations.jakarta"
       '';
     };
     darwinConfigurations.jakarta = nix-darwin.lib.darwinSystem {

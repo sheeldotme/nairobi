@@ -7,11 +7,18 @@
     };
   };
   outputs =  { self, nixpkgs, nix-darwin }: {
-    packages.aarch64-darwin.default = nixpkgs.legacyPackages.aarch64-darwin.writeShellApplication {
+    packages.aarch64-darwin.default = let 
+      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+    in pkgs.writeShellApplication {
       name = "nairobi-installer";
-      runtimeInputs = [];
+      runtimeInputs = [
+        pkgs.git
+        pkgs.gh
+      ];
       text = ''
-        echo "Hello, world!"
+        gh auth login
+        mkdir -p $HOME/.config
+        gh repo clone nairobi $HOME/.config/nairobi
       '';
     };
     darwinConfigurations.jakarta = nix-darwin.lib.darwinSystem {

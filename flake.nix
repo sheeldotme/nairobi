@@ -16,9 +16,13 @@
         pkgs.gh
       ];
       text = ''
-        gh auth login
-        mkdir -p "$HOME/.config"
-        gh repo clone nairobi "$HOME/.config/nairobi"
+        work="$HOME/.config/nairobi"
+        mkdir -p $work
+        if [ -z "$(ls -A $work)" ]; then
+          gh auth login
+          gh repo clone nairobi "$work"
+        fi
+        nix build "$work#darwinConfigurations.jakarta.system"
       '';
     };
     darwinConfigurations.jakarta = nix-darwin.lib.darwinSystem {

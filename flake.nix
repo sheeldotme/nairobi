@@ -21,6 +21,8 @@
         if [ -z "$(ls -A "$work")" ]; then
           gh auth login
           gh repo clone nairobi "$work"
+        else
+          (cd "$work" && git pull)
         fi
         nix build "$work#darwinConfigurations.jakarta.system"
       '';

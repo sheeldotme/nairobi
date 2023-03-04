@@ -7,6 +7,6 @@ then
    curl -L https://nixos.org/nix/install | sh
 fi
 
-NIX_FLAGS='--extra-experimental-features "nix-command flakes"'
+# execute nix run in a login shell so we know the path will contain nix
 
-bash -lc "nix $NIX_FLAGS run github:sheeldotme/nairobi/main"
+bash -lc "nix --refresh --extra-experimental-features 'nix-command flakes' run github:sheeldotme/nairobi/main"

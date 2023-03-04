@@ -18,14 +18,27 @@
       text = ''
         work="$HOME/.config/nairobi"
         mkdir -p "$work"
-        if [ -z "$(ls -A "$work")" ]; then
+        cd $work
+
+        # if $work is empty clone nairobi otherwise pull
+        
+        if [ -z "$(ls -A .)" ]; then
           gh auth login
-          gh repo clone nairobi "$work"
+          gh repo clone nairobi .
         else
-          (cd "$work" && git pull)
+          git pull
         fi
-        nix build "$work#darwinConfigurations.jakarta.system"
-        result/sw/bin/darwin-rebuild switch --flake "$work#jakarta"
+
+        # build the initial system so we can use its nix-darwin installer
+
+        installer="darwin-rebuild"
+        
+        if ! command -v "$installer" &> /dev/null; then
+          nix build ".#darwinConfigurations.jakarta.system"
+          installer="result/sw/bin/$installer"
+        fi
+        
+        "$installer" switch --flake ".#jakarta"
       '';
     };
     darwinConfigurations.jakarta = nix-darwin.lib.darwinSystem {

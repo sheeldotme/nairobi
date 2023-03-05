@@ -56,7 +56,11 @@
               imports = [
                 ./modules/podman.nix
               ];
-              home.stateVersion = "23.05";
+              home = {
+                username = "sheelpatel";
+                homeDirectory = "/Users/sheelpatel";
+                stateVersion = "23.05";
+              };
               nairobi.podman.enable = true;
               programs = {
                 gh = {
@@ -84,6 +88,9 @@
           };
           programs.zsh.enable = true;
           services.nix-daemon.enable = true;
+          users.users.sheelpatel = {
+            home = "/Users/sheelpatel";
+          };
         })
         home-manager.darwinModules.home-manager
       ];

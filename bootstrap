@@ -4,9 +4,9 @@
 
 if ! command -v nix &> /dev/null
 then
-   curl -L https://nixos.org/nix/install | sh
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix/tag/v0.11.0 | sh -s -- install
 fi
 
 # execute nix run in a login shell so we know the path will contain nix
 
-bash -lc "nix --refresh --extra-experimental-features 'nix-command flakes' run github:sheeldotme/nairobi/main"
+bash -lc "nix --refresh run github:sheeldotme/nairobi/main"

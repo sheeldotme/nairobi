@@ -132,7 +132,10 @@
           nix = {
             package = pkgs.nixFlakes;
             extraOptions = ''
-              experimental-features = nix-command flakes
+              bash-prompt-prefix = (nix:$name)\040
+              extra-nix-path = nixpkgs=flake:nixpkgs
+              experimental-features = nix-command flakes auto-allocate-uids
+              build-users-group = nixbld
             '';
           };
           programs.zsh.enable = true;

@@ -126,8 +126,8 @@
             };
           };
           networking = {
-            computerName = "jakarta";
-            hostName = "jakarta";
+            computerName = "aachen";
+            hostName = "aachen";
           };
           nix = {
             package = pkgs.nixFlakes;

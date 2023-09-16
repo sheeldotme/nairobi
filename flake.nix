@@ -112,6 +112,7 @@
                 stateVersion = "23.05";
               };
               programs = {
+                bat.enable = true;
                 gh = {
                   enable = true;
                   settings.git.protocol = "ssh";

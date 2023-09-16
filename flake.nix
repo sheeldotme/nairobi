@@ -95,5 +95,54 @@
         home-manager.darwinModules.home-manager
       ];
     };
+    darwinConfigurations.aachen = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ({ pkgs, ... }: {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.sheelpatel = { pkgs, ... }: {
+              imports = [
+                ./modules/podman.nix
+              ];
+              home = {
+                username = "administrator";
+                homeDirectory = "/Users/administrator";
+                stateVersion = "23.05";
+              };
+              programs = {
+                gh = {
+                  enable = true;
+                  settings.git.protocol = "ssh";
+                };
+                git = {
+                  enable = true;
+                  userEmail = "hello@sheel.me";
+                  userName = "Sheel Patel";
+                };
+                zsh.enable = true;
+              };
+            };
+          };
+          networking = {
+            computerName = "jakarta";
+            hostName = "jakarta";
+          };
+          nix = {
+            package = pkgs.nixFlakes;
+            extraOptions = ''
+              experimental-features = nix-command flakes
+            '';
+          };
+          programs.zsh.enable = true;
+          services.nix-daemon.enable = true;
+          users.users.administrator = {
+            home = "/Users/administrator";
+          };
+        })
+        home-manager.darwinModules.home-manager
+      ];
+    };
   };
 }

@@ -130,6 +130,9 @@
                   userName = "Sheel Patel";
                   delta.enable = true;
                 };
+                helix.enable = true;
+                hyfetch.enable = true;
+                jq.enable = true;
                 zsh.enable = true;
               };
             };

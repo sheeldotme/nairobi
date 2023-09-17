@@ -158,7 +158,7 @@
                     SD_EDITOR = "hx";
                     SD_CAT = "bat";
                   };
-                }
+                };
                 starship = {
                   enable = true;
                   enableZshIntegration = true;

@@ -113,10 +113,17 @@
               };
               programs = {
                 bat.enable = true;
+                direnv = {
+                  enable = true;
+                  enableZshIntegration = true;
+                  nix-direnv.enable = true;
+                };
+                eza.enable = true;
                 gh = {
                   enable = true;
                   settings.git.protocol = "ssh";
                 };
+                gh-dash.enable = true;
                 git = {
                   enable = true;
                   userEmail = "hello@sheel.me";

@@ -129,7 +129,6 @@
                   userEmail = "hello@sheel.me";
                   userName = "Sheel Patel";
                   delta.enable = true;
-                  difftastic.enable = true;
                 };
                 zsh.enable = true;
               };

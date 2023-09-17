@@ -119,6 +119,10 @@
                   nix-direnv.enable = true;
                 };
                 eza.enable = true;
+                fzf = {
+                  enable = true;
+                  enableZshIntegration = true;
+                };
                 gh = {
                   enable = true;
                   settings.git.protocol = "ssh";
@@ -133,6 +137,34 @@
                 helix.enable = true;
                 hyfetch.enable = true;
                 jq.enable = true;
+                k9s.enable = true;
+                man.enable = true;
+                mr.enable = true;
+                navi = {
+                  enable = true;
+                  enableZshIntegration = true;
+                };
+                noti.enable = true;
+                nushell.enable = true;
+                ripgrep.enable = true;
+                rtx = {
+                  enable = true;
+                  enableZshIntegration = true;
+                };
+                script-directory = true;
+                starship = {
+                  enable = true;
+                  enableZshIntegration = true;
+                };
+                topgrade.enable = true;
+                zellij = {
+                  enable = true;
+                  enableZshIntegration = true;
+                };
+                zoxide = {
+                  enable = true;
+                  enableZshIntegration = true;
+                };
                 zsh.enable = true;
               };
             };

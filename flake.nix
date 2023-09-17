@@ -151,7 +151,14 @@
                   enable = true;
                   enableZshIntegration = true;
                 };
-                script-directory = true;
+                script-directory = {
+                  enable = true;
+                  settings = {
+                    SD_ROOT = "${config.home.homeDirectory}/.bin";
+                    SD_EDITOR = "hx";
+                    SD_CAT = "bat";
+                  };
+                }
                 starship = {
                   enable = true;
                   enableZshIntegration = true;

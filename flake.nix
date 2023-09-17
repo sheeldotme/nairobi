@@ -102,7 +102,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.administrator = { pkgs, ... }: {
+            users.administrator = { pkgs, config,  ... }: {
               imports = [
                 ./modules/podman.nix
               ];
